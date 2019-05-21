@@ -29,7 +29,7 @@ strtype::~strtype() {
 	cout << "Освобождение памяти\n";
 }
 void strtype::show() {
-	cout << p << "-длина: " << len<<"\n";
+	cout << p << "-длина: " << len << "\n";
 }
 
 int main()
