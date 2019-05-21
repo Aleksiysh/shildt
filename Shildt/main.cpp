@@ -8,8 +8,6 @@ int main()
 {
 	to1251();
 
-	
-
 	system("pause");
 	return 0;
 }
