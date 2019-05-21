@@ -1,39 +1,16 @@
+//#include "stdafx.h"
 #include <iostream>
+#include "to1251.h"
 
 using namespace std;
 
+int main()
+{
+	to1251();
 
-class myclass {
-	int a;
-public:
-	void set_a(int num);
-	int get_a();
-};
-
-void myclass::set_a(int num) {
-	a = num;
-}
-
-int myclass::get_a() {
-	return a;
-}
-
-int main() {
-
-	char ch;
-	cout << "¬водите символы до х. \n";
-	
-	do {
-		cout << ":";
-		cin >> ch;
-	} while (ch != 'x');
-
-	myclass b;
-
-	b.set_a(6);
-
-	cout << b.get_a();
-
-	
+	char string[20];
+	cin >> string; // вводим строку, использу€  ириллицу
+	cout << "\nвывод: " << string << endl; // ввывод строки
+	system("pause");
 	return 0;
 }
