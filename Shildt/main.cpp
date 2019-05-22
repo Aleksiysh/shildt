@@ -1,29 +1,30 @@
 
 #include <iostream>
-#include <cstring>
 #include "to1251.h"
 
-#pragma warning(disable : 4996)
+//#pragma warning(disable : 4996)
 
 using namespace std;
 
+class samp {
+	int i, j;
+public:
+	void set_ij(int a, int b) { i = a; j = b; }
+	int get_product() { return i * j; }
+};
 
 int main()
 {
 	to1251();
-	int *p;
-	p = new int;
-	if (!p) {
-		cout << "Ошибка выделения памяти\n";
+	samp *p;
+	p = new samp;
+	if (!p)
+	{
+		cout << "Ошибка памяти\n";
 		return 1;
-	};
-	*p = 1000;
-	cout << "Это целое по указателю " << p << ": " << *p<<"\n" ;
-
-	delete p;
-
-	cout << p<<"\n";
-	
+	}
+	p->set_ij(4, 5);
+	cout << "Итог: " << p->get_product();
 
 	system("pause");
 	return 0;
