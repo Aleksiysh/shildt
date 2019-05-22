@@ -6,25 +6,46 @@
 
 using namespace std;
 
-class myclass {
-	int n, d;
+class truck;
+
+class car {
+	int passendgers;
+	int speed;
 public:
-	myclass(int i, int j) { n = i; d = j; }
-	friend int isfactor(myclass ob);
+	car(int p, int s) { passendgers = p; speed = s; }
+	int sp_greater(truck t);
 };
-int isfactor(myclass ob) {
-	if (!(ob.n % ob.d)) return 1;
-	else return 0;
+
+class truck {
+	int weight;
+	int speed;
+public:
+	truck(int w, int s) { weight = w; speed = s; }
+	friend int car::sp_greater(truck t);
+};
+
+int car::sp_greater(truck t) {
+	return speed - t.speed;
 }
 
 int main()
 {
 	to1251();
-	myclass ob1(10, 2), ob2(13, 3);
-	if (isfactor(ob1)) cout << "10%2 без остатка\n";
-	else cout << "10 не % на 2\n";
-	if (isfactor(ob2)) cout << "13%3 без остатка\n";
-	else cout << "13 не % на 3\n";
+	int t;
+	car c1(6, 55), c2(2, 120);
+	truck t1(10000, 55), t2(20000, 72);
+	
+	cout << "Сравнение с1 t1\n";
+	t = c1.sp_greater(t1);
+	if (t < 0) cout << "Грузовик быстрее\n";
+	else if (t == 0) cout << "Скорости равны\n";
+	else cout << "Легковая быстрее\n";
+	
+	cout << "Сравнение с2 t2\n";
+	t = c2.sp_greater(t2);
+	if (t < 0) cout << "Грузовик быстрее\n";
+	else if (t == 0) cout << "Скорости равны\n";
+	else cout << "Легковая быстрее\n";
 
 	system("pause");
 	return 0;
