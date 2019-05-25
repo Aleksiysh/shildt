@@ -2,7 +2,7 @@
 #include <iostream>
 #include "to1251.h"
 
-#pragma warning(disable : 4996)
+//#pragma warning(disable : 4996)
 
 using namespace std;
 
@@ -13,72 +13,84 @@ public:
 	point(int i, int j) { x = i, y = j; }
 	void get_xy(int &i, int &j) { i = x, j = y; }
 	void set_xy(int i, int j) { x = i; y = j; }
-	point operator+(point &ob2);
-	point operator-(point ob2);
-	point operator-();
+	friend point operator+(point &ob1, point &ob2);
+	friend point operator-(point &ob1, point &ob2);
+	friend point operator-(point &ob1);
 	point operator=(point ob2);
-	point operator+(int i);
-	int operator==(point &ob2);
-	int operator&&(point &ob2);
-	point operator++();	//œ–≈‘» —
-	point operator--();	//œ–≈‘» —
-	point operator++(int notused);	//œŒ—“‘» —
-	point operator--(int notused);	//œŒ—“‘» —
+	friend point operator+(point &ob1, int i);
+	friend point operator+(int i, point &ob1);
+	friend int operator==(point &ob1, point &ob2);
+	friend int operator&&(point &ob1, point &ob2);
+	friend void operator++(point &ob1);	//œ–≈‘» —
+	friend void operator--(point &ob1);	//œ–≈‘» —
+	friend void operator++(point &ob1, int);	//œŒ—“‘» —
+	friend void operator--(point &ob1, int);	//œŒ—“‘» —
+	
 };
-point point::operator+(point &ob2) {
+
+point operator+(point &ob1, point &ob2) {
 	point temp;
-	temp.x = x + ob2.x;
-	temp.y = y + ob2.y;
+	temp.x = ob1.x + ob2.x;
+	temp.y = ob1.y + ob2.y;
 	return temp;
 }
-point point::operator-(point ob2) {
+point operator-(point &ob1, point &ob2) {
 	point temp;
-	temp.x = x - ob2.x;
-	temp.y = y - ob2.y;
+	temp.x = ob1.x - ob2.x;
+	temp.y = ob1.y - ob2.y;
 	return temp;
 }
-point point::operator-() {
-	x *= -1;
-	y *= -1;
-	return *this;
+point operator-(point &ob1) {
+	point temp;
+	temp.x = -ob1.x;
+	temp.y = -ob1.y;
+	return temp;
 }
-point point::operator=(point ob2) {
+point point:: operator=(point ob2) {
+	
 	x = ob2.x;
 	y = ob2.y;
 	return *this;
 }
-point point::operator+(int i) {
+point operator+(point &ob1,int i) {
 	point temp;
-	temp.x = x + i;
-	temp.y = y + i;
+	temp.x = ob1.x + i;
+	temp.y = ob1.y + i;
 	return temp;
 }
-int point::operator==(point &ob2) {
-	return (x == ob2.x && y == ob2.y);
+point operator+(int i,point &ob1) {
+	point temp;
+	temp.x = ob1.x + i;
+	temp.y = ob1.y + i;
+	return temp;
 }
-int point::operator&&(point &ob2) {
-	return (x && ob2.x) && (y && ob2.y);
+int operator==(point &ob1,point &ob2) {
+	return (ob1.x == ob2.x && ob1.y == ob2.y);
 }
-point point::operator++() {
-	x++;
-	y++;
-	return *this;
+int operator&&(point &ob1,point &ob2) {
+	return (ob1.x && ob2.x) && (ob1.y && ob2.y);
 }
-point point::operator--() {
-	x--;
-	y--;
-	return *this;
+void operator++(point &ob1) {
+	ob1.x++;
+	ob1.y++;
+	
 }
-point point:: operator++(int) {
-	x++;
-	y++;
-	return *this;
+void operator--(point &ob1) {
+	ob1.x--;
+	ob1.y--;
+	
 }
-point point::operator--(int notused) {
-	x--;
-	y--;
-	return *this;
+void operator++(point &ob1,int) {
+	ob1.x++;
+	ob1.y++;
+	
 }
+void operator--(point &ob1,int) {
+	ob1.x--;
+	ob1.y--;
+	
+}
+
 
 int main()
 {
