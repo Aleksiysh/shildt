@@ -15,6 +15,7 @@ public:
 	coord operator+(coord ob2);
 	coord operator-(coord ob2);
 	coord operator=(coord ob2);
+	coord operator+(int i);
 };
 coord coord::operator+(coord ob2) {
 	coord temp;
@@ -34,7 +35,12 @@ coord coord::operator=(coord ob2) {
 	y = ob2.y;
 	return *this;
 }
-
+coord coord::operator+(int i) {
+	coord temp;
+	temp.x = x + i;
+	temp.y = y + i;
+	return temp;
+}
 
 int main()
 {
@@ -51,6 +57,11 @@ int main()
 	o3 = o1;
 	o3.get_xy(x, y);
 	cout << x << " " << y << endl;
+
+	o3 = o1 + 7;
+	o3.get_xy(x, y);
+	cout << x << " " << y << endl;
+
 
 	system("pause");
 	return 0;
