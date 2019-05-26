@@ -9,32 +9,27 @@ using namespace std;
 class B1 {
 	int a;
 public:
-	B1(int x) { a = x; };
-	int geta() { return a; }
+	B1() { cout << "Конструктор B1 \n"; }
+	~B1() { cout << "Деструктор B1 \n"; }
 };
 class B2 {
 	int b;
 public:
-	B2(int x){
-		b = x;
-	}
-	int getb() { return b; }
+	
+	B2() { cout << "Конструктор B2 \n"; }
+	~B2() { cout << "Деструктор B2 \n"; }
 };
 class D :public B1, public B2 {
 	int c;
 public:
-	D(int x, int y, int z) :B1(z),B2(y) {
-		c = x;
-	}
-	void show() {
-		cout << geta() << " " << getb() << " " << c << endl;
-	}
+	D() { cout << "Конструктор D \n"; }
+	~D() { cout << "Деструктор D \n"; }
+	
 };
 int main()
 {
 	to1251();
-	D ob(1, 2, 3);
-	ob.show();
+	D ob;
 
 	//system("pause");
 	return 0;
