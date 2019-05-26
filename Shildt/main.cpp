@@ -16,7 +16,7 @@ public:
 class derived :public base {
 	int j;
 public:
-	derived(int n):base(n) { cout << "Конструктор производный\n"; j = n; }
+	derived(int n,int m):base(m) { cout << "Конструктор производный\n"; j = n; }
 	~derived() { cout << "Деструктор производный\n"; }
 	void showj() { cout << "j=" << j << endl; }
 };
@@ -24,7 +24,7 @@ public:
 int main()
 {
 	to1251();
-	derived ob(10);
+	derived ob(10,20);
 	ob.showi();
 	ob.showj();
 	//system("pause");
