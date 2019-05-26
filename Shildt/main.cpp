@@ -6,27 +6,36 @@
 
 using namespace std;
 
-class base {
-	int i;
+class B1 {
+	int a;
 public:
-	base(int n) { cout << "Конструктор базовый\n"; i = n; }
-	~base() { cout << "Деструктор базовый\n"; }
-	void showi() { cout << "i=" << i << endl; }
+	B1(int x) { a = x; };
+	int geta() { return a; }
 };
-class derived :public base {
-	int j;
+class D1:public B1 {
+	int b;
 public:
-	derived(int m):base(m) { cout << "Конструктор производный\n"; j = 0; }
-	~derived() { cout << "Деструктор производный\n"; }
-	void showj() { cout << "j=" << j << endl; }
+	D1(int x,int y):B1(y){
+		b = x;
+	}
+	int getb() { return b; }
 };
-
+class D2 :public D1 {
+	int c;
+public:
+	D2(int x, int y, int z) :D1(y, z) {
+		c = x;
+	}
+	void show() {
+		cout << geta() << " " << getb() << " " << c << endl;
+	}
+};
 int main()
 {
 	to1251();
-	derived ob(20);
-	ob.showi();
-	ob.showj();
+	D2 ob(1, 2, 3);
+	ob.show();
+
 	//system("pause");
 	return 0;
 }
