@@ -6,28 +6,28 @@
 
 using namespace std;
 
-class base {
-	int x;
+class samp {
+	int a;
+protected:
+	int b;
 public:
-	void setx(int i) { x = i; }
-	void showx() { cout << x << endl; }
+	int c;
+	samp(int n, int m) { a = n; b = m; }
+	int geta() { return a; }
+	int getb() { return b; }
 };
 
-class derived :base {
-	int y;
-public:
-	void set_xy(int i, int j) { setx(i); y = j; }
-	void show_xy() { showx(); cout << y << endl; }
-};
 
 int main()
 {
 	to1251();
-	derived ob;
-	ob.set_xy(10,20);
-	
+	samp ob(10, 20);
+	//ob.b = 99;
+	ob.c = 30;
 
-	ob.show_xy();
+	cout << ob.geta() << endl;
+	cout << ob.getb() << endl;
+
 	
 
 	system("pause");
