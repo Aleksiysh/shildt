@@ -12,7 +12,7 @@ protected:
 public:
 	void set_ab(int i, int j) { a = i; b = j; }
 };
-class derived :public base {
+class derived :protected base {
 	int c;
 public:
 	void set_c(int i) { c = i; }
