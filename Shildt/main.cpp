@@ -7,28 +7,20 @@
 using namespace std;
 
 class base {
-protected:
-	int a, b;
 public:
-	void set_ab(int i, int j) { a = i; b = j; }
+	base() { cout << "Конструктор базовый\n"; }
+	~base() { cout << "Деструктор базовый\n"; }
 };
-class derived :protected base {
-	int c;
+class derived :public base {
 public:
-	void set_c(int i) { c = i; }
-	void show_abc() {
-		cout << a << " " << b << " " << c << endl;
-	}
+	derived() { cout << "Конструктор производный\n"; }
+	~derived(){ cout << "Деструктор производный\n"; }
 };
-
 
 int main()
 {
 	to1251();
 	derived ob;
-	ob.set_ab(1, 2);
-	ob.set_c(3);
-	ob.show_abc();
-	system("pause");
+	//system("pause");
 	return 0;
 }
