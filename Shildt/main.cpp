@@ -6,30 +6,29 @@
 
 using namespace std;
 
-class samp {
-	int a;
+class base {
 protected:
-	int b;
+	int a, b;
 public:
+	void set_ab(int i, int j) { a = i; b = j; }
+};
+class derived :public base {
 	int c;
-	samp(int n, int m) { a = n; b = m; }
-	int geta() { return a; }
-	int getb() { return b; }
+public:
+	void set_c(int i) { c = i; }
+	void show_abc() {
+		cout << a << " " << b << " " << c << endl;
+	}
 };
 
 
 int main()
 {
 	to1251();
-	samp ob(10, 20);
-	//ob.b = 99;
-	ob.c = 30;
-
-	cout << ob.geta() << endl;
-	cout << ob.getb() << endl;
-
-	
-
+	derived ob;
+	ob.set_ab(1, 2);
+	ob.set_c(3);
+	ob.show_abc();
 	system("pause");
 	return 0;
 }
