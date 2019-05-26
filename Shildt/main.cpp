@@ -12,18 +12,18 @@ public:
 	B1(int x) { a = x; };
 	int geta() { return a; }
 };
-class D1:public B1 {
+class B2 {
 	int b;
 public:
-	D1(int x,int y):B1(y){
+	B2(int x){
 		b = x;
 	}
 	int getb() { return b; }
 };
-class D2 :public D1 {
+class D :public B1, public B2 {
 	int c;
 public:
-	D2(int x, int y, int z) :D1(y, z) {
+	D(int x, int y, int z) :B1(z),B2(y) {
 		c = x;
 	}
 	void show() {
@@ -33,7 +33,7 @@ public:
 int main()
 {
 	to1251();
-	D2 ob(1, 2, 3);
+	D ob(1, 2, 3);
 	ob.show();
 
 	//system("pause");
