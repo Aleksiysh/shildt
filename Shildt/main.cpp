@@ -1,37 +1,47 @@
 
 #include <iostream>
+#include <cstring>
 #include "to1251.h"
 
 #pragma warning(disable : 4996)
 
 using namespace std;
 
-class coord {
-	int x, y;
+class inventory {
+	char item[40];	//название
+	int onhand;		//наличие
+	double cost;	//цена
 public:
-	coord() { x = 0; y = 0; }
-	coord(int i, int j) { x = i; y = j; }
-	friend ostream &operator<<(ostream &stream, coord ob);
-	friend istream &operator>>(istream &stream, coord &ob);
+	inventory(char *i, int o, double c) {
+		strcpy(item, i);
+		onhand = o;
+		cost = c;
+	}
+	friend ostream &operator<<(ostream &stream, inventory ob);
+	friend istream &operator>>(istream &stream, inventory &ob);
 };
-ostream &operator<<(ostream &stream,coord ob){
-	stream << ob.x << "," << ob.y << endl;
+ostream &operator<<(ostream &stream, inventory ob) {
+	stream << ob.item << ": " << ob.onhand << " на руках по цене $" << ob.cost << endl;
 	return stream;
 }
-istream &operator>>(istream &stream, coord &ob) {
-	cout << "Введите координаты: ";
-	stream>> ob.x >> ob.y;
+istream &operator>>(istream &stream, inventory &ob) {
+	cout << "Веедите название: ";
+	stream >> ob.item;
+	cout << "количество: ";
+	stream >> ob.onhand;
+	cout << "Цена: ";
+	stream >> ob.cost;
 	return stream;
+
 }
 int main()
 {
 	to1251();
-	coord a(1, 1), b(10, 23);
-
-	cout << a << b << endl;
-	cin >> a;
-	cout << a;
-
+	char str[] = "hammer";
+	inventory ob(str, 4, 12.55);
+	cout << ob;
+	cin >> ob;
+	cout << ob;
 	system("pause");
 	return 0;
 }
