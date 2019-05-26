@@ -2,34 +2,36 @@
 #include <iostream>
 #include "to1251.h"
 
-#pragma warning(disable : 4996)
+//#pragma warning(disable : 4996)
 
 using namespace std;
 
-class B1 {
-	int a;
+class base {
 public:
-	B1() { cout << "Конструктор B1 \n"; }
-	~B1() { cout << "Деструктор B1 \n"; }
+	int i;
 };
-class B2 {
-	int b;
+
+class derived1 : virtual public base {
 public:
-	
-	B2() { cout << "Конструктор B2 \n"; }
-	~B2() { cout << "Деструктор B2 \n"; }
+	int j;
 };
-class D :public B1, public B2 {
-	int c;
+class derived2 : virtual public base {
 public:
-	D() { cout << "Конструктор D \n"; }
-	~D() { cout << "Деструктор D \n"; }
-	
+	int k;
+};
+class derived3 :public derived1, public derived2 {
+public:
+	int product() { return i * j * k; }
 };
 int main()
 {
 	to1251();
-	D ob;
+	derived3 ob;
+	ob.i = 10;
+	ob.j = 2;
+	ob.k = 3;
+	cout << ob.product() << endl;
+
 
 	//system("pause");
 	return 0;
